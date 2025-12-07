@@ -6,7 +6,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 STATUS_PRINT() {
-    if [ $1 -ne 0 ]
+    if [ $1 -eq 0 ]
     then
        echo -e $G SUCCESS $N
     else
@@ -17,7 +17,7 @@ STATUS_PRINT() {
 APP_PREREQ() {
     echo Create Application User
     id roboshop &>>$log_file
-    if [ $? -ne 0 ]
+    if [ $? -eq 0 ]
     then
       useradd roboshop &>>$log_file
     fi
@@ -52,9 +52,9 @@ SYSTEMD_SETUP() {
     STATUS_PRINT $?
 }
 NODEJS() {
-    # echo Disable Default NodeJS Version
-    # dnf module disable nodejs -y &>>$log_file
-    # STATUS_PRINT $?
+    echo Disable Default NodeJS Version
+    dnf module disable nodejs -y &>>$log_file
+    STATUS_PRINT $?
 
     echo Enable NodeJS 20 Version
     dnf module enable nodejs:20 -y &>>$log_file
@@ -65,7 +65,7 @@ NODEJS() {
     STATUS_PRINT $?
 
     APP_PREREQ
-
+    
     echo install npm dependencies
     npm install &>> $log_file
     STATUS_PRINT $?
