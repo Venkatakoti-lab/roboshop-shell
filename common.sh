@@ -42,7 +42,7 @@ APP_PREREQ() {
 }
 SYSTEMD_SETUP() {
     echo copying the service file
-    cp $dir_path/$app_name.service /etc/systemd/system/$app_name.service $log_file &>> $log_file
+    cp $dir_path/$app_name.service /etc/systemd/system/$app_name.service &>> $log_file
     STATUS_PRINT $?
     echo start application 
     systemctl daemon-reload &>> $log_file
