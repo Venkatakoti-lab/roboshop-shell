@@ -1,6 +1,6 @@
 PATH=$(pwd)
 log_file=/tmp/roboshop.log
-rm -rf $log_file
+# rm -rf $log_file
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
