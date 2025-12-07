@@ -15,7 +15,7 @@ NODEJS
 # systemctl enable catalogue 
 # systemctl start catalogue
 echo Copy MongoDB repo file
-cp  $PATH/mongo.repo /etc/yum.repos.d/mongo.repo &>> $log_file
+cp $PATH/mongo.repo /etc/yum.repos.d/mongo.repo &>> $log_file
 STATUS_PRINT $?
 echo install mongodb
 dnf install mongodb-mongosh -y &>> $log_file
