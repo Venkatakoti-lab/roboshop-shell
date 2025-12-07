@@ -34,7 +34,7 @@ APP_PREREQ() {
     echo Download the service_file
     curl -o /tmp/$app_name.zip https://roboshop-artifacts.s3.amazonaws.com/$app_name-v3.zip &>> $log_file
     STATUS_PRINT $?
-    
+
     cd /app &>>$log_file
     echo unzip the service_file
     unzip /tmp/$app_name.zip &>> $log_file
@@ -44,10 +44,11 @@ SYSTEMD_SETUP() {
     echo copying the service file
     cp $PATH/$app_name.service /etc/systemd/system/$app_name.service $log_file &>> $log_file
     STATUS_PRINT $?
-    systemctl daemon-reload
-    systemctl enable $app_name 
-    echo start the service
-    systemctl start $app_name 
+    echo start application 
+    systemctl daemon-reload &>> $log_file
+    systemctl enable $app_name &>> $log_file
+    echo start the service 
+    systemctl restart $app_name &>> $log_file
     STATUS_PRINT $?
 }
 NODEJS() {
