@@ -14,7 +14,7 @@ dnf install $app_name -y   &>> $log_file
 STATUS_PRINT $?
 
 echo update $app_name configuration_file
-sed -i -e 's/127.0.0.1/0.0.0.0/' -e '/protected-mode/ -c protected-mode no' /etc/redis/redis.conf
+sed -i -e 's/127.0.0.1/0.0.0.0/' -e '/protected-mode/ c protected-mode no' /etc/redis/redis.conf
 STATUS_PRINT $?
 
 
