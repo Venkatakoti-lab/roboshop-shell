@@ -15,10 +15,11 @@ STATUS_PRINT() {
     fi
 }
 APP_PREREQ() {
-    id roboshop
+    echo Create Application User
+    id roboshop &>>$log_file
     if [ $? -ne 0 ]
     then
-    useradd roboshop
+      useradd roboshop &>>$log_file
     fi
     STATUS_PRINT $?
     mkdir /app 
