@@ -22,12 +22,19 @@ APP_PREREQ() {
       useradd roboshop &>>$log_file
     fi
     STATUS_PRINT $?
+
+    echo remove app directory
+    rm -rf /app &>>$log_file
+    STATUS_PRINT $?
+
     echo create app directory
     mkdir /app &>>$log_file
     STATUS_PRINT $?
+
     echo Download the service_file
     curl -o /tmp/$app_name.zip https://roboshop-artifacts.s3.amazonaws.com/$app_name-v3.zip &>> $log_file
     STATUS_PRINT $?
+    
     cd /app &>>$log_file
     echo unzip the service_file
     unzip /tmp/$app_name.zip &>> $log_file
