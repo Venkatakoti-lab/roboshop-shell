@@ -17,7 +17,7 @@ STATUS_PRINT() {
 APP_PREREQ() {
     echo Create Application User
     id roboshop &>>$log_file
-    if [ $? -eq 0 ]
+    if [ $? -ne 0 ]
     then
       useradd roboshop &>>$log_file
     fi
