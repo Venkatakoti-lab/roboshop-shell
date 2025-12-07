@@ -52,16 +52,20 @@ SYSTEMD_SETUP() {
     STATUS_PRINT $?
 }
 NODEJS() {
-    echo disable nodeJs
-    dnf module disable nodejs -y &>> $log_file
+    echo Disable Default NodeJS Version
+    dnf module disable nodejs -y &>>$log_file
     STATUS_PRINT $?
-    echo enable NodeJS
-    dnf module enable nodejs:20 -y &>> $log_file
+
+    echo Enable NodeJS 20 Version
+    dnf module enable nodejs:20 -y &>>$log_file
     STATUS_PRINT $?
+
     echo Install NodeJS
     dnf install nodejs -y &>> $log_file
     STATUS_PRINT $?
+
     APP_PREREQ
+    
     echo install npm dependencies
     npm install &>> $log_file
     STATUS_PRINT $?
