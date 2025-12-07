@@ -15,5 +15,9 @@ NODEJS
 # systemctl enable catalogue 
 # systemctl start catalogue
 # cp  mongo.repo /etc/yum.repos.d/mongo.repo
-dnf install mongodb-mongosh -y
-mongosh --host mongodb-dev.kanakam.shop </app/db/master-data.js
+echo install mongodb
+dnf install mongodb-mongosh -y &>> $log_file
+STATUS_PRINT $?
+echo load the schema
+mongosh --host mongodb-dev.kanakam.shop </app/db/master-data.js &>> $log_file
+STATUS_PRINT $?

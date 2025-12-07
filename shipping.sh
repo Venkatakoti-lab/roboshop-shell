@@ -15,10 +15,21 @@ source ./common.sh
 app_name=shipping
 JAVA
 
-dnf install mysql -y 
-mysql -h mysql-dev.kanakam.shop -uroot -pRoboShop@1 < /app/db/schema.sql
-mysql -h mysql-dev.kanakam.shop -uroot -pRoboShop@1 < /app/db/app-user.sql
-mysql -h mysql-dev.kanakam.shop -uroot -pRoboShop@1 < /app/db/master-data.sql
-systemctl restart shipping
+echo installing mysql
+dnf install mysql -y &>> $log_file
+STATUS_PRINT $?
+
+for file in schema app-user master-data
+do 
+echo load $file schema
+mysql -h mysql-dev.kanakam.shop -uroot -pRoboShop@1 < /app/db/$file.sql
+STATUS_PRINT $?
+done
+# mysql -h mysql-dev.kanakam.shop -uroot -pRoboShop@1 < /app/db/schema.sql
+# mysql -h mysql-dev.kanakam.shop -uroot -pRoboShop@1 < /app/db/app-user.sql
+# mysql -h mysql-dev.kanakam.shop -uroot -pRoboShop@1 < /app/db/master-data.sql
+echo restart $app_name service
+systemctl restart $app_name
+STATUS_PRINT $?
 
 
