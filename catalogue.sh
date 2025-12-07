@@ -14,7 +14,9 @@ NODEJS
 # systemctl daemon-reload
 # systemctl enable catalogue 
 # systemctl start catalogue
-# cp  mongo.repo /etc/yum.repos.d/mongo.repo
+echo Copy MongoDB repo file
+cp  $PATH/mongo.repo /etc/yum.repos.d/mongo.repo &>> $log_file
+STATUS_PRINT $?
 echo install mongodb
 dnf install mongodb-mongosh -y &>> $log_file
 STATUS_PRINT $?
