@@ -1,4 +1,4 @@
-PATH=$(pwd)
+dir_path=$(pwd)
 log_file=/tmp/roboshop.log
 # rm -rf $log_file
 R="\e[31m"
@@ -42,7 +42,7 @@ APP_PREREQ() {
 }
 SYSTEMD_SETUP() {
     echo copying the service file
-    cp $PATH/$app_name.service /etc/systemd/system/$app_name.service $log_file &>> $log_file
+    cp $dir_path/$app_name.service /etc/systemd/system/$app_name.service $log_file &>> $log_file
     STATUS_PRINT $?
     echo start application 
     systemctl daemon-reload &>> $log_file
