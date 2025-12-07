@@ -1,7 +1,9 @@
 source ./common.sh
-
+echo repo copied
+cp rabbitmq.repo /etc/yum.repos.d/rabbitmq.repo &>>$log_file
+STATUS_PRINT $?
 echo install rabitmq
-dnf install rabbitmq-server -y &>> $log_file
+dnf install rabbitmq-server -y &>>$log_file
 STATUS_PRINT $?
 
 systemctl enable rabbitmq-server
