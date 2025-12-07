@@ -52,9 +52,6 @@ SYSTEMD_SETUP() {
     STATUS_PRINT $?
 }
 NODEJS() {
-    echo Reset NodeJS module
-    dnf module reset nodejs -y &>> $log_file
-    STATUS_PRINT $?
     echo disable nodeJs
     dnf module disable nodejs -y &>> $log_file
     STATUS_PRINT $?
