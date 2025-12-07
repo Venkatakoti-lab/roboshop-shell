@@ -11,6 +11,6 @@
 # systemctl daemon-reload
 # systemctl enable cart 
 # systemctl start cart
-source=../common.sh
+source ./common.sh
 app_name=cart
 NODEJS

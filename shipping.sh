@@ -11,7 +11,7 @@
 # systemctl daemon-reload
 # systemctl enable shipping 
 # systemctl start shipping
-source=../common.sh
+source ./common.sh
 app_name=shipping
 JAVA
 

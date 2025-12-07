@@ -1,4 +1,4 @@
-source=./common.sh
+source ./common.sh
 app_name=catalogue
 NODEJS
 # dnf module disable nodejs -y

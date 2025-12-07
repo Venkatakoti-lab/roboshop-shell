@@ -10,7 +10,7 @@
 # systemctl daemon-reload
 # systemctl enable payment 
 # systemctl start payment
-source=../common.sh
+source ./common.sh
 app_name=payment
 PYTHON 
 

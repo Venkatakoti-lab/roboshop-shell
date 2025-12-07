@@ -12,6 +12,6 @@
 # systemctl daemon-reload
 # systemctl enable user 
 # systemctl start user
-source=../common.sh
+source ./common.sh
 app_name=user
 NODEJS
